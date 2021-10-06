@@ -1,8 +1,7 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux"
+import { useSelector} from "react-redux"
 
 const Tasks = () => {
-const dispatch = useDispatch()
 const initialAmount = useSelector(store => store.tasks.initialAmount)
 const costs = useSelector(store => store.tasks.costs)
 
