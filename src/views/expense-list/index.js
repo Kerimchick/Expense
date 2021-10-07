@@ -1,8 +1,12 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import {useDispatch, useSelector} from "react-redux";
+import {removeFromList} from "../../redux/actions/tasksActions";
 
 const ExpenseList = () => {
+    const dispatch = useDispatch()
+    const expense = useSelector(store=> store.tasks)
     return (
         <div className="container">
             <table className="table mt-5">
@@ -15,36 +19,20 @@ const ExpenseList = () => {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                        <button type="button" className="btn btn-danger me-2 btn-sm text-white">
-                        <FontAwesomeIcon icon={faTrash} />
-                    </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>
-                        <button type="button" className="btn btn-danger me-2 btn-sm text-white">
-                            <FontAwesomeIcon icon={faTrash} />
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>
-                        <button type="button" className="btn btn-danger me-2 btn-sm text-white">
-                            <FontAwesomeIcon icon={faTrash} />
-                        </button>
-                    </td>
-                </tr>
+                    {
+                        expense.tasks.map((el,index) =>
+                            <tr key={index}>
+                                <td>{el.date}</td>
+                                <td>{el.title}</td>
+                                <td>{el.expense}</td>
+                                <td>
+                                <button type="button" className="btn btn-danger me-2 btn-sm text-white"
+                                        onClick={() => dispatch(removeFromList(el))}>
+                                    <FontAwesomeIcon icon={faTrash} />
+                                </button></td>
+                            </tr>
+                        )
+                    }
                 </tbody>
             </table>
         </div>
