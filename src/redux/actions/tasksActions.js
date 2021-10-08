@@ -9,3 +9,7 @@ export const removeFromList = (index) => {
 export const clearListExpense = () => {
   return {type:'CLEAR_LIST_EXPENSE'}
 }
+
+export const sortTasksList = () => {
+  return {type:'SORT_TASKS_LIST'}
+}

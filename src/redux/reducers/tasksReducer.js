@@ -22,6 +22,11 @@ export const tasksReducer = (state = initialState, action) => {
             }
         case "CLEAR_LIST_EXPENSE":
             return state = initialState
+        case "SORT_TASKS_LIST":
+            state.tasks.sort((a, b) => {
+              return   state.sort ==="asc" ? a.expense - b.expense : b.expense - a.expense
+            })
+            return {...state, tasks: [...state.tasks], sort: state.sort === "asc" ? "desc" : "asc"}
         default:
             return state
     }
