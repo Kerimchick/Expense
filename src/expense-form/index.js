@@ -7,7 +7,7 @@ import { faCalendar, faPencilAlt, faDollarSign } from '@fortawesome/free-solid-s
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {useDispatch} from "react-redux";
-import {addCost} from "../../redux/actions/tasksActions";
+import {addCost} from "../redux/actions/tasksActions";
 
 
 const ExpenseForm = () => {
