@@ -27,7 +27,7 @@ const ExpenseList = () => {
                                 <td>{el.expense}</td>
                                 <td>
                                 <button type="button" className="btn btn-danger me-2 btn-sm text-white"
-                                        onClick={() => dispatch(removeFromList(el))}>
+                                        onClick={() => dispatch(removeFromList(index))}>
                                     <FontAwesomeIcon icon={faTrash} />
                                 </button></td>
                             </tr>

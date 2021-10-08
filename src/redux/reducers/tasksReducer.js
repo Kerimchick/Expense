@@ -10,17 +10,18 @@ export const tasksReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD_COST":
             return {...state, tasks: [...state.tasks, action.payload],
-                initialAmount: state.initialAmount,
                 currentBalance: state.currentBalance - action.payload.expense,
                 costs: state.costs + action.payload.expense
             }
         case "REMOVE_FROM_LIST":
+            const deletedItem = state.tasks[action.payload]
             return {
-                ...state, tasks: state.tasks.filter(el => el.id !== action.payload),
-                initialAmount: state.initialAmount,
-                costs: state.costs - action.payload.expense,
-                currentBalance: state.currentBalance + action.payload.expense
+                ...state, tasks: state.tasks.filter((el, index) => index !== action.payload),
+                costs: state.costs - +deletedItem.expense,
+                currentBalance: state.currentBalance + +deletedItem.expense
             }
+        case "CLEAR_LIST_EXPENSE":
+            return state = initialState
         default:
             return state
     }
