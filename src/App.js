@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Tasks from "./tasks";
 import ExpenseForm from "./expense-form";
 import ExpenseList from "./expense-list";
+import ModalUser from "./modal";
 
 const App = () => {
     return (
@@ -11,6 +12,7 @@ const App = () => {
             <Tasks />
             <ExpenseForm />
             <ExpenseList />
+            <ModalUser />
         </div>
     );
 };
